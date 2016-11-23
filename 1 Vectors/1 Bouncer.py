@@ -8,6 +8,7 @@ WIDTH = 800
 HEIGHT = 600
 mousepos = np.array([WIDTH / 2, HEIGHT / 2])
 
+
 class Mover:
     def __init__(self):
         self.position = np.array([WIDTH / 2.0, HEIGHT / 2.0])
