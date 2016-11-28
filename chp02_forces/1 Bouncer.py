@@ -1,19 +1,21 @@
 # coding=utf-8
 
-from tkinter import *
-import numpy as np
 import random
+from tkinter import *
+
+import numpy as np
 
 WIDTH = 800
 HEIGHT = 600
 
 mousepos = np.array([WIDTH / 2, HEIGHT / 2])
 is_mouse_down = False
+is_rmouse_down = False
 
 
 class Liquid:
     def __init__(self):
-        self.density = 0.9
+        self.density = 0.5
 
     def draw(self, canvas):
         canvas.create_rectangle(0, HEIGHT/2, WIDTH, HEIGHT,
@@ -95,6 +97,16 @@ def mouseup(event):
     is_mouse_down = False
 
 
+def rmousedown(event):
+    global is_rmouse_down
+    is_rmouse_down = True
+
+
+def rmouseup(event):
+    global is_rmouse_down
+    is_rmouse_down = False
+
+
 def main():
 
     liquid.draw(c)
@@ -103,8 +115,9 @@ def main():
         gravity = np.array([0, 0.2]) * mover.mass
         mover.apply(gravity)
 
-        # wind = np.array([0.2, 0])
-        # mover.apply(wind)
+        wind = np.array([0.2, 0])
+        if is_mouse_down:
+            mover.apply(wind)
 
         # friction_coeff = -0.1
         # friction = friction_coeff * mover.velocity
@@ -132,6 +145,8 @@ c.pack()
 c.bind('<Motion>', mousemove)
 c.bind('<Button-1>', mousedown)
 c.bind('<ButtonRelease-1>', mouseup)
+c.bind('<Button-2>', rmousedown)
+c.bind('<ButtonRelease-3>', rmouseup)
 
 liquid = Liquid()
 movers = []
