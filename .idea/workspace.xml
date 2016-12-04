@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f852c0c-1aaf-4fb4-b1c3-bb0f97bd5db4" name="Default" comment="Chapter 2 added">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chp03_oscillation/1 Pendulum.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chp03_oscillation/2 Spring.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chp04_systems/1 ParticleSystem.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tkinter example.py" />
+    <list default="true" id="4f852c0c-1aaf-4fb4-b1c3-bb0f97bd5db4" name="Default" comment="Chapter 4 rewritten using pygame">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chp02_forces/1 Bouncer.py" afterPath="$PROJECT_DIR$/chp02_forces/1 Bouncer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chp05_physicslibraries/2 Box2D PyGame.py" afterPath="$PROJECT_DIR$/chp05_physicslibraries/2 Box2D PyGame.py" />
     </list>
     <ignored path="nature_of_code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,11 +27,10 @@
       <file leaf-file-name="2 Spring.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chp03_oscillation/2 Spring.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="0">
               <caret line="171" column="22" selection-start-line="171" selection-start-column="22" selection-end-line="175" selection-end-column="19" />
               <folding>
-                <element signature="e#16#37#0" expanded="true" />
-                <element signature="e#1580#3330#0" expanded="false" />
+                <element signature="e#1559#3309#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -44,10 +39,10 @@
       <file leaf-file-name="1 ParticleSystem.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chp04_systems/1 ParticleSystem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="124" column="21" selection-start-line="123" selection-start-column="4" selection-end-line="124" selection-end-column="21" />
+            <state relative-caret-position="342">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
-                <element signature="e#16#37#0" expanded="true" />
+                <element signature="e#16#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,10 +51,57 @@
       <file leaf-file-name="1 Box2D.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/1 Box2D.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
+            <state relative-caret-position="-697">
+              <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2 Box2D PyGame.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/2 Box2D PyGame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
               <folding>
-                <element signature="e#16#37#0" expanded="true" />
+                <element signature="e#17#33#0" expanded="false" />
+                <element signature="e#35#48#0" expanded="true" />
+                <element signature="e#261#277#0" expanded="false" />
+                <element signature="e#293#318#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Globals.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/Globals.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Particle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/Particle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding>
+                <element signature="e#16#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParticleSystem.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/ParticleSystem.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding>
+                <element signature="e#16#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -99,6 +141,11 @@
         <option value="$PROJECT_DIR$/chp03_oscillation/2 Spring.py" />
         <option value="$PROJECT_DIR$/chp04_systems/1 ParticleSystem.py" />
         <option value="$PROJECT_DIR$/chp05_physicslibraries/1 Box2D.py" />
+        <option value="$PROJECT_DIR$/pygame_temp.py" />
+        <option value="$PROJECT_DIR$/chp05_physicslibraries/Globals.py" />
+        <option value="$PROJECT_DIR$/chp05_physicslibraries/ParticleSystem.py" />
+        <option value="$PROJECT_DIR$/chp05_physicslibraries/Particle.py" />
+        <option value="$PROJECT_DIR$/chp05_physicslibraries/2 Box2D PyGame.py" />
       </list>
     </option>
   </component>
@@ -247,14 +294,80 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="NOC_5_9_CollisionListening" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nature_of_code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="The-Nature-of-Code-Examples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chp05_physicslibraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="box2d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NOC_5_2_Boxes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nature_of_code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="The-Nature-of-Code-Examples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chp05_physicslibraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="box2d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NOC_5_1_box2d_exercise_solved" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nature_of_code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="The-Nature-of-Code-Examples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chp05_physicslibraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="box2d" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="NOC_5_1_box2d_exercise" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -271,24 +384,7 @@
       <recent name="D:\Documents\Dropbox\nature_of_code\0. Introduction" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.1 Box2D">
-    <configuration default="false" name="1 Bouncer (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chp02_forces" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="nature_of_code" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chp02_forces/1 Bouncer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.2 Box2D PyGame">
     <configuration default="false" name="1 Pendulum" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -353,6 +449,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="nature_of_code" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chp05_physicslibraries/1 Box2D.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="2 Box2D PyGame" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chp05_physicslibraries" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="nature_of_code" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chp05_physicslibraries/2 Box2D PyGame.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -492,19 +605,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.1 Bouncer (1)" />
-      <item index="1" class="java.lang.String" itemvalue="Python.1 Pendulum" />
-      <item index="2" class="java.lang.String" itemvalue="Python.2 Spring" />
-      <item index="3" class="java.lang.String" itemvalue="Python.1 ParticleSystem" />
-      <item index="4" class="java.lang.String" itemvalue="Python.1 Box2D" />
+      <item index="0" class="java.lang.String" itemvalue="Python.1 Pendulum" />
+      <item index="1" class="java.lang.String" itemvalue="Python.2 Spring" />
+      <item index="2" class="java.lang.String" itemvalue="Python.1 ParticleSystem" />
+      <item index="3" class="java.lang.String" itemvalue="Python.1 Box2D" />
+      <item index="4" class="java.lang.String" itemvalue="Python.2 Box2D PyGame" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.1 Box2D" />
-        <item index="1" class="java.lang.String" itemvalue="Python.1 ParticleSystem" />
-        <item index="2" class="java.lang.String" itemvalue="Python.2 Spring" />
-        <item index="3" class="java.lang.String" itemvalue="Python.1 Pendulum" />
-        <item index="4" class="java.lang.String" itemvalue="Python.1 Bouncer (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.2 Box2D PyGame" />
+        <item index="1" class="java.lang.String" itemvalue="Python.1 Box2D" />
+        <item index="2" class="java.lang.String" itemvalue="Python.1 ParticleSystem" />
+        <item index="3" class="java.lang.String" itemvalue="Python.2 Spring" />
+        <item index="4" class="java.lang.String" itemvalue="Python.1 Pendulum" />
       </list>
     </recent_temporary>
   </component>
@@ -540,7 +653,28 @@
       <option name="project" value="LOCAL" />
       <updated>1480256231561</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Chapter 4 added">
+      <created>1480280158393</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1480280158393</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Chapter 4 rewritten using pygame">
+      <created>1480304939226</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1480304939226</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Chapter 5  using pygame and box2d">
+      <created>1480363635250</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1480363635250</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -556,22 +690,23 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17910448" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18070363" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5021322" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.50319827" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.336887" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30066815" sideWeight="0.4968017" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.336887" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20735608" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25529543" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -587,137 +722,77 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Chapter 2 added" />
     <MESSAGE value="Chapter 3&#10;added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chapter 3&#10;added" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Chapter 4 added" />
+    <MESSAGE value="Chapter 4 rewritten using pygame" />
+    <MESSAGE value="Chapter 5  using pygame and box2d" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chapter 5  using pygame and box2d" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/0 Introduction/0 Intro.py">
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/1 Box2D.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="1955">
+          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1 Vectors/1 Bouncer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/1 random walker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/2 eight side walker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/3 perlin walker.py">
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/2 Box2D PyGame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#17#33#0" expanded="false" />
+            <element signature="e#35#48#0" expanded="true" />
+            <element signature="e#261#277#0" expanded="false" />
+            <element signature="e#293#318#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/0 Intro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/1 random walker.py">
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_2_Boxes/Box.pde">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/2 eight side walker.py">
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_9_CollisionListening/NOC_5_9_CollisionListening.pde">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="38" selection-end-column="75" />
+          <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/3 perlin walker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/0 Introduction/0 Intro.py" />
+    <entry file="file://$PROJECT_DIR$/1 Vectors/1 Bouncer.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/1 random walker.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/2 eight side walker.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/3 perlin walker.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/0 Intro.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/1 random walker.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/2 eight side walker.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/3 perlin walker.py" />
     <entry file="file://C:/Program Files (x86)/Python35-32/Lib/tkinter/__init__.py" />
     <entry file="file://C:/Program Files (x86)/Python35-32/Lib/site-packages/noise/shader_noise.py" />
     <entry file="file://C:/Program Files (x86)/Python35-32/Lib/site-packages/noise/perlin.py" />
     <entry file="file://C:/Program Files (x86)/Python35-32/Lib/site-packages/noise/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/0 Introduction/1 random walker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/2 eight side walker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/0 Intro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0 Introduction/3 perlin walker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1 Vectors/1 Bouncer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/0 Introduction/1 random walker.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/2 eight side walker.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/0 Intro.py" />
+    <entry file="file://$PROJECT_DIR$/0 Introduction/3 perlin walker.py" />
+    <entry file="file://$PROJECT_DIR$/1 Vectors/1 Bouncer.py" />
     <entry file="file://C:/Anaconda3/Lib/tkinter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -726,19 +801,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2 Forses/1 Bouncer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2222">
-          <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/2 Forses/1 Bouncer.py" />
     <entry file="file://$PROJECT_DIR$/chp03_oscillation/NOC_3_10_PendulumExample/NOC_3_10_PendulumExample.pde">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -746,7 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -762,9 +828,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
-          <folding>
-            <element signature="e#16#37#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -772,7 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -780,17 +843,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-124">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chp03_oscillation/2 Spring.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="0">
           <caret line="171" column="22" selection-start-line="171" selection-start-column="22" selection-end-line="175" selection-end-column="19" />
           <folding>
-            <element signature="e#16#37#0" expanded="true" />
-            <element signature="e#1580#3330#0" expanded="false" />
+            <element signature="e#1559#3309#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -811,16 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chp04_systems/1 ParticleSystem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="124" column="21" selection-start-line="123" selection-start-column="4" selection-end-line="124" selection-end-column="21" />
-          <folding>
-            <element signature="e#16#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Anaconda3/Lib/site-packages/Box2D-2.3.2-py3.5-win-amd64.egg/Box2D/Box2D.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -829,7 +880,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_1_box2d_exercise/NOC_5_1_box2d_exercise.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda3/Lib/site-packages/pygame/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+          <folding>
+            <element signature="e#1245#2811#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pygame_temp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+          <folding>
+            <element signature="e#34#47#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_1_box2d_exercise_solved/NOC_5_1_box2d_exercise_solved.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_2_Boxes/NOC_5_2_Boxes.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-66">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_9_CollisionListening/Particle.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_1_box2d_exercise/Box.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_1_box2d_exercise_solved/Box.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_9_CollisionListening/NOC_5_9_CollisionListening.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_2_Boxes/Box.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -837,21 +967,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/box2d/NOC_5_1_box2d_exercise/NOC_5_1_box2d_exercise.pde">
+    <entry file="file://$PROJECT_DIR$/chp04_systems/1 ParticleSystem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="342">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/Particle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/ParticleSystem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#16#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/Globals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/2 Box2D PyGame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+          <folding>
+            <element signature="e#17#33#0" expanded="false" />
+            <element signature="e#35#48#0" expanded="true" />
+            <element signature="e#261#277#0" expanded="false" />
+            <element signature="e#293#318#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chp05_physicslibraries/1 Box2D.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
-          <folding>
-            <element signature="e#16#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-697">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
