@@ -1,46 +1,39 @@
 # coding=utf-8
 
 import random
+from abc import abstractmethod, ABCMeta
 from math import pi
 
 import pygame
 from Box2D import b2PolygonShape, b2CircleShape
-from .Globals import WIDTH, HEIGHT
 
-scale_factor = 10.0
-transX = WIDTH / 2
-transY = HEIGHT / 2
+from chp05_physicslibraries.Particles.Globals import vec_pixels2world, vec_world2pixels, scalar_pixels2world
 
 
-def vec_pixels2world(vec2):
-    x, y = vec2[0], vec2[1]
-    x_ = (x - transX) / scale_factor
-    y_ = (transY - y) / scale_factor
-    return x_, y_
+class Sprite(metaclass=ABCMeta):
+    def __init__(self):
+        self.lifespan = 150
+        self.size = (random.random() * 10 + 5, random.random() * 10 + 5)
+
+    @abstractmethod
+    def draw(self, scr):
+        pass
+
+    @abstractmethod
+    def delete(self, world):
+        pass
 
 
-def vec_world2pixels(vec2):
-    x, y = vec2[0], vec2[1]
-    x_ = x * scale_factor + transX
-    y_ = (1 - y) * scale_factor + transY
-    return x_, y_
+# TODO from chapter 4 and 3
 
-
-def scalar_pixels2world(val):
-    return val / scale_factor
-
-
-def scalar_world2pixels(val):
-    return val * scale_factor
-
-
-class Particle:
+class Particle(Sprite):
     def __init__(self, world, pos, circle=False, size=None):
+        super().__init__()
         pos = vec_pixels2world(pos)
         if size:
             self.size = size
         else:
-            self.size = (random.random() * 10 + 5, random.random() * 10 + 5)
+            pass
 
         if circle:
             shape = b2CircleShape(pos=(pos[0], pos[1]), radius=size)
@@ -52,8 +45,9 @@ class Particle:
                                             shapes=shape)
         self.box = self.body.CreateCircleFixture(shape=shape, density=1.0, friction=0.3)
 
-        self.lifespan = 150
         self.life = self.lifespan
+
+        self.pos = self.body.position
 
     def draw(self, scr):
         s = pygame.Surface(self.size, pygame.SRCALPHA)  # per-pixel alpha
