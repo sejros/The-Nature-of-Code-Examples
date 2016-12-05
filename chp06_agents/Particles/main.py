@@ -5,6 +5,7 @@
 
 from random import random
 from numpy import array as vector
+from numpy.linalg import norm
 
 import pygame
 
@@ -16,7 +17,7 @@ except ImportError:
 
 from Particle import Mover
 
-from Globals import WIDTH, HEIGHT, WHITE, mousepos, is_mouse_down, normalize
+from Globals import WIDTH, HEIGHT, WHITE, mousepos, is_mouse_down, normalize, dist
 
 # endregion
 
@@ -32,7 +33,7 @@ class Vehicle(Mover):
     def __init__(self, pos):
         super().__init__(pos)
         self.maxspeed = 4
-        self.maxforce = 0.1
+        self.maxforce = 0.05
         self.desired = vector((0, 0))
 
     def draw(self, scr, debug=False):
@@ -51,11 +52,12 @@ class Vehicle(Mover):
     def run(self, scr):
         self.update()
         self.toroid()
-        self.flee(mousepos)
+        self.arrive2(mousepos)
         self.draw(scr, True)
 
     def steer(self, desired):
-        desired = normalize(desired) * self.maxspeed
+        if norm(desired) > self.maxspeed:
+            desired = normalize(desired) * self.maxspeed
         self.desired = desired
         steer = desired - self.velocity
         steer = normalize(steer) * self.maxforce
@@ -67,6 +69,19 @@ class Vehicle(Mover):
 
     def flee(self, target):
         self.steer(self.position - target)
+
+    def arrive(self, target):
+        self.steer((target - self.position) * 0.1)
+
+    def arrive2(self, target, radius=200):
+        desired = target - self.position
+        d = dist(self.position, target)
+        if d < radius:
+            desired = desired * d / radius
+        self.steer(desired)
+
+    def wander(self):
+        pass
 
 
 # endregion
