@@ -1,6 +1,8 @@
 # coding=utf-8
 
 from numpy.core.numeric import array as vector
+from math import sqrt
+from numpy.linalg import norm
 
 WIDTH = 800
 HEIGHT = 600
@@ -38,3 +40,11 @@ def scalar_pixels2world(val):
 
 def scalar_world2pixels(val):
     return val * scale_factor
+
+
+def dist(pos1, pos2):
+    return sqrt((pos1[0] - pos2[0]) ** 2 + (pos1[1] - pos2[1]) ** 2)
+
+
+def normalize(vector):
+    return vector / norm(vector)

@@ -3,12 +3,19 @@
 
 # region imports
 
+from random import random
+
 import pygame
-from Box2D import b2World
 
-from Particle import Particle
+try:
+    from Box2D import b2World
+except ImportError:
+    def b2World(*args, **kwargs):
+        raise NotImplementedError()
 
-from Globals import WIDTH, HEIGHT, WHITE, mousepos, is_mouse_down
+from Particle import Mover
+
+from Globals import WIDTH, HEIGHT, WHITE, mousepos, is_mouse_down, normalize
 
 # endregion
 
@@ -20,6 +27,43 @@ from Globals import WIDTH, HEIGHT, WHITE, mousepos, is_mouse_down
 
 # region class definition
 
+class Vehicle(Mover):
+    def __init__(self, pos):
+        super().__init__(pos)
+        self.maxspeed = 4
+        self.maxforce = 0.1
+
+    def draw(self, scr, debug=False):
+        pos = (int(self.position[0]), int(self.position[1]))
+        pygame.draw.circle(scr, (0, 0, 0), pos, 10, 1)
+        if debug:
+            scale = 20
+            end = (int(pos[0] + self.velocity[0] * scale),
+                   int(pos[1] + self.velocity[1] * scale))
+            pygame.draw.line(scr, (200, 0, 0), pos, end, 2)
+
+            end = (int(pos[0] + self.desired[0] * scale),
+                   int(pos[1] + self.desired[1] * scale))
+            pygame.draw.line(scr, (0, 200, 0), pos, end, 2)
+
+    def run(self, scr):
+        self.update()
+        self.toroid()
+        self.seek(mousepos)
+        self.draw(scr, True)
+
+    def steer(self, desired):
+        desired = normalize(desired) * self.maxspeed
+        self.desired = desired
+        steer = desired - self.velocity
+        steer = normalize(steer) * self.maxforce
+
+        self.apply(steer)
+
+    def seek(self, target):
+        self.steer(target - self.position)
+
+
 # endregion
 
 
@@ -29,38 +73,21 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 done = False
 clock = pygame.time.Clock()
 
-box2d_world = b2World(gravity=(0, -10))
-# Box2D.listenForCollisions()
+movers = []
 
-part = Particle(box2d_world, (WIDTH / 2, HEIGHT / 2), size=(50, 50))
-part2 = Particle(box2d_world, (WIDTH / 2 + 100, HEIGHT / 2), size=(20, 20))
-
-pss = []
-
+movers.append(Vehicle((WIDTH / 2, HEIGHT / 2)))
 
 # endregion
 
 
 def main():
     screen.fill(WHITE)
-    box2d_world.Step(1.0 / 60, 6, 2)
 
-    # if is_mouse_down:
-    #     part2.body.position = vec_pixels2world(mousepos)
+    if is_mouse_down and random() < 0.8:
+        movers.append(Vehicle(mousepos.copy()))
 
-    part.draw(screen)
-    part2.draw(screen)
-
-    # for system in pss:
-    #     system.run(screen)
-    #     print(len(system.particles))
-    # print()
-
-    if is_mouse_down:
-        pss.append(Particle(box2d_world, mousepos.copy()))
-
-    for particle in pss:
-        particle.draw(screen)
+    for particle in movers:
+        particle.run(screen)
 
     pygame.display.flip()
     clock.tick(60)

@@ -7,9 +7,18 @@ from numpy import array as vector
 import numpy as np
 
 import pygame
-from Box2D import b2PolygonShape, b2CircleShape
 
-from chp05_physicslibraries.Particles.Globals import vec_pixels2world, vec_world2pixels, scalar_pixels2world
+try:
+    from Box2D import b2PolygonShape, b2CircleShape
+except ImportError:
+    def b2PolygonShape(*args, **kwargs):
+        raise NotImplementedError()
+
+
+    def b2CircleShape(*args, **kwargs):
+        raise NotImplementedError()
+
+from chp06_agents.Particles.Globals import vec_pixels2world, vec_world2pixels, scalar_pixels2world, WIDTH, HEIGHT
 
 
 class Sprite(metaclass=ABCMeta):
@@ -52,19 +61,44 @@ class Mover(Sprite):
         self.position += self.velocity
         self.acceleration = np.array([0.0, 0.0])
 
-        self.lifespan -= 1
+        self.age -= 1
 
     def draw(self, scr):
         s = pygame.Surface(self.size, pygame.SRCALPHA)  # per-pixel alpha
-        s.fill((127, 127, 127, (128 - self.lifespan)))  # notice the alpha value in the color
-        pygame.draw.rect(s, (0, 0, 0, ((255 / 75) * self.lifespan)),
-                         [0, 0,
-                          self.size[0], self.size[1]], 3)
+        color = (self.age / self.lifespan) * 255
+        print(self.age, self.lifespan, color)
+        s.fill((127, 127, 127, color))  # notice the alpha value in the color
+        # pygame.draw.rect(s, (0, 0, 0),
+        #                  [0, 0,
+        #                   self.size[0], self.size[1]], 3)
         # s = pygame.transform.rotate(s, 45)
         scr.blit(s, self.position)
 
     def delete(self, world):
         pass
+
+    def bounce(self):
+        if 0 > self.position[0]:
+            self.position[0] = 0
+            self.velocity[0] *= -1
+        if self.position[0] > WIDTH:
+            self.position[0] = WIDTH
+            self.velocity[0] *= -1
+        if 0 > self.position[1]:
+            self.position[1] = 0
+            self.velocity[1] *= -1
+        if self.position[1] > HEIGHT:
+            self.position[1] = HEIGHT
+            self.velocity[1] *= -1
+
+    def toroid(self):
+        self.position[0] %= WIDTH
+        self.position[1] %= HEIGHT
+
+    def run(self, scr):
+        self.update()
+        self.toroid()
+        self.draw(scr)
 
 
 # TODO from chapter 4 and 3
