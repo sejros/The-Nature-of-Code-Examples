@@ -4,6 +4,7 @@
 # region imports
 
 from random import random
+from numpy import array as vector
 
 import pygame
 
@@ -32,12 +33,13 @@ class Vehicle(Mover):
         super().__init__(pos)
         self.maxspeed = 4
         self.maxforce = 0.1
+        self.desired = vector((0, 0))
 
     def draw(self, scr, debug=False):
         pos = (int(self.position[0]), int(self.position[1]))
         pygame.draw.circle(scr, (0, 0, 0), pos, 10, 1)
         if debug:
-            scale = 20
+            scale = 5
             end = (int(pos[0] + self.velocity[0] * scale),
                    int(pos[1] + self.velocity[1] * scale))
             pygame.draw.line(scr, (200, 0, 0), pos, end, 2)
@@ -49,7 +51,7 @@ class Vehicle(Mover):
     def run(self, scr):
         self.update()
         self.toroid()
-        self.seek(mousepos)
+        self.flee(mousepos)
         self.draw(scr, True)
 
     def steer(self, desired):
@@ -62,6 +64,9 @@ class Vehicle(Mover):
 
     def seek(self, target):
         self.steer(target - self.position)
+
+    def flee(self, target):
+        self.steer(self.position - target)
 
 
 # endregion
@@ -88,6 +93,8 @@ def main():
 
     for particle in movers:
         particle.run(screen)
+
+    print(len(movers))
 
     pygame.display.flip()
     clock.tick(60)
