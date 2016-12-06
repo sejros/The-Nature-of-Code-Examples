@@ -7,6 +7,7 @@ from random import random, uniform
 from numpy import array as vector
 from numpy.linalg import norm
 from math import pi, sin, cos
+from noise import pnoise2
 
 import pygame
 
@@ -57,6 +58,20 @@ class FlowField:
                 pygame.draw.line(scr, (255, 255, 0),
                                  center, center + self.field[i][j], 1)
 
+
+class PerlinField(FlowField):
+    def __init__(self):
+        super().__init__()
+        delta = 0.05
+        xoff, yoff = 0, 0
+        for i in range(self.cols):
+            yoff = 0
+            for j in range(self.rows):
+                angle = pnoise2(xoff, yoff) * 2 * pi
+                print(xoff, yoff, angle)
+                self.field[i][j] = vector((sin(angle), cos(angle))) * 10
+                yoff += delta
+            xoff += delta
 
 
 class Vehicle(Mover):
@@ -126,7 +141,7 @@ class Vehicle(Mover):
             self.steer(vector((self.velocity[1], -self.maxspeed)))
 
     def follow(self, field):
-        desired = field.lookup(self.position)
+        desired = field.lookup(self.position + self.velocity)
         self.steer(desired)
 
     def run(self, scr):
@@ -151,7 +166,7 @@ clock = pygame.time.Clock()
 movers = []
 movers.append(Vehicle((WIDTH / 2, HEIGHT / 2)))
 
-flowfiled = FlowField()
+flowfiled = PerlinField()
 
 # endregion
 
