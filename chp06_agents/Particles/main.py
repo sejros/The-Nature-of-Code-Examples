@@ -30,6 +30,35 @@ from Globals import WIDTH, HEIGHT, WHITE, mousepos, is_mouse_down, normalize, di
 
 # region class definition
 
+class FlowField:
+    def __init__(self):
+        self.field = []
+        self.resolution = 20
+        self.cols = int(WIDTH / self.resolution)
+        self.rows = int(HEIGHT / self.resolution)
+        for i in range(self.cols):
+            row = []
+            for j in range(self.rows):
+                row.append(vector((10, 0)))
+            self.field.append(row)
+
+    def lookup(self, location):
+        col = int(location[0] / self.resolution) % self.cols - 1
+        row = int(location[1] / self.resolution) % self.cols - 1
+        return self.field[col][row]
+
+    def draw(self, scr):
+        for i in range(self.cols):
+            for j in range(self.rows):
+                center = vector((int((i + 0.5) * self.resolution),
+                                 int((j + 0.5) * self.resolution)))
+                pygame.draw.circle(scr, (255, 255, 0), center,
+                                   int(self.resolution / 5), 1)
+                pygame.draw.line(scr, (255, 255, 0),
+                                 center, center + self.field[i][j], 1)
+
+
+
 class Vehicle(Mover):
     def __init__(self, pos):
         super().__init__(pos)
@@ -52,13 +81,6 @@ class Vehicle(Mover):
             end = (int(pos[0] + self.desired[0] * scale),
                    int(pos[1] + self.desired[1] * scale))
             pygame.draw.line(scr, (0, 200, 0), pos, end, 2)
-
-    def run(self, scr):
-        self.update()
-        self.toroid()
-        # self.wander()
-        self.bounce()
-        self.draw(scr, True)
 
     def steer(self, desired):
         if norm(desired) > self.maxspeed:
@@ -103,6 +125,19 @@ class Vehicle(Mover):
         if self.position[1] > HEIGHT - d:
             self.steer(vector((self.velocity[1], -self.maxspeed)))
 
+    def follow(self, field):
+        desired = field.lookup(self.position)
+        self.steer(desired)
+
+    def run(self, scr):
+        self.update()
+
+        self.toroid()
+        # self.wander()
+        # self.bounce()
+
+        self.draw(scr, True)
+
 
 # endregion
 
@@ -114,8 +149,9 @@ done = False
 clock = pygame.time.Clock()
 
 movers = []
-
 movers.append(Vehicle((WIDTH / 2, HEIGHT / 2)))
+
+flowfiled = FlowField()
 
 # endregion
 
@@ -128,6 +164,9 @@ def main():
 
     for particle in movers:
         particle.run(screen)
+        particle.follow(flowfiled)
+
+    flowfiled.draw(screen)
 
     print(len(movers))
 
