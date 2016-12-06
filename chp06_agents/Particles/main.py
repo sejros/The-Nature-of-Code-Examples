@@ -6,6 +6,7 @@
 from random import random
 from numpy import array as vector
 from numpy.linalg import norm
+from math import pi, sin, cos
 
 import pygame
 
@@ -35,6 +36,7 @@ class Vehicle(Mover):
         self.maxspeed = 4
         self.maxforce = 0.05
         self.desired = vector((0, 0))
+        self.theta = 0
 
     def draw(self, scr, debug=False):
         pos = (int(self.position[0]), int(self.position[1]))
@@ -52,7 +54,7 @@ class Vehicle(Mover):
     def run(self, scr):
         self.update()
         self.toroid()
-        self.arrive2(mousepos)
+        self.wander(scr)
         self.draw(scr, True)
 
     def steer(self, desired):
@@ -80,8 +82,16 @@ class Vehicle(Mover):
             desired = desired * d / radius
         self.steer(desired)
 
-    def wander(self):
-        pass
+    def wander(self, scr, d=50, r=25, change=0.5):
+        center = normalize(self.velocity) * d + self.position
+        self.theta += random() * 2 * change - change
+        randrad = vector((sin(self.theta), cos(self.theta))) * r
+        desired = center + randrad
+
+        pygame.draw.line(scr, (0, 0, 255), self.position, center, 2)
+        pygame.draw.line(scr, (0, 0, 255), center, desired, 2)
+
+        self.steer(desired - self.position)
 
 
 # endregion
