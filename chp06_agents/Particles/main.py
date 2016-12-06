@@ -7,7 +7,7 @@ from random import random, uniform
 from numpy import array as vector
 from numpy.linalg import norm
 from math import pi, sin, cos
-from noise import pnoise2
+from noise import pnoise2, pnoise3
 
 import pygame
 
@@ -68,8 +68,29 @@ class PerlinField(FlowField):
             yoff = 0
             for j in range(self.rows):
                 angle = pnoise2(xoff, yoff) * 2 * pi
-                print(xoff, yoff, angle)
                 self.field[i][j] = vector((sin(angle), cos(angle))) * 10
+                yoff += delta
+            xoff += delta
+
+
+class PerlinField3d(FlowField):
+    def __init__(self):
+        super().__init__()
+        self.toff = 0
+        self.generate()
+
+    def update(self):
+        self.toff += 0.01
+        self.generate()
+
+    def generate(self):
+        delta = 0.05
+        xoff, yoff = 0, 0
+        for i in range(self.cols):
+            yoff = 0
+            for j in range(self.rows):
+                angle = pnoise3(xoff, yoff, self.toff) * 2 * pi
+                self.field[i][j] = vector((sin(angle), cos(angle))) * 20
                 yoff += delta
             xoff += delta
 
@@ -77,8 +98,8 @@ class PerlinField(FlowField):
 class Vehicle(Mover):
     def __init__(self, pos):
         super().__init__(pos)
-        self.maxspeed = 4
-        self.maxforce = 0.05
+        self.maxspeed = 10
+        self.maxforce = 0.5
         self.desired = vector((0, 0))
         self.theta = 0
         self.velocity = vector([uniform(-self.maxspeed / 2, self.maxspeed / 2),
@@ -166,7 +187,7 @@ clock = pygame.time.Clock()
 movers = []
 movers.append(Vehicle((WIDTH / 2, HEIGHT / 2)))
 
-flowfiled = PerlinField()
+flowfiled = PerlinField3d()
 
 # endregion
 
@@ -182,8 +203,9 @@ def main():
         particle.follow(flowfiled)
 
     flowfiled.draw(screen)
+    flowfiled.update()
 
-    print(len(movers))
+    # print(len(movers))
 
     pygame.display.flip()
     clock.tick(60)
