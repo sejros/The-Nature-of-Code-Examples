@@ -3,7 +3,7 @@
 
 # region imports
 
-from random import random
+from random import random, uniform
 from numpy import array as vector
 from numpy.linalg import norm
 from math import pi, sin, cos
@@ -37,6 +37,8 @@ class Vehicle(Mover):
         self.maxforce = 0.05
         self.desired = vector((0, 0))
         self.theta = 0
+        self.velocity = vector([uniform(-self.maxspeed / 2, self.maxspeed / 2),
+                                uniform(-self.maxspeed / 2, self.maxspeed / 2)])
 
     def draw(self, scr, debug=False):
         pos = (int(self.position[0]), int(self.position[1]))
@@ -54,7 +56,8 @@ class Vehicle(Mover):
     def run(self, scr):
         self.update()
         self.toroid()
-        self.wander(scr)
+        # self.wander()
+        self.bounce()
         self.draw(scr, True)
 
     def steer(self, desired):
@@ -82,16 +85,23 @@ class Vehicle(Mover):
             desired = desired * d / radius
         self.steer(desired)
 
-    def wander(self, scr, d=50, r=25, change=0.5):
+    def wander(self, d=50, r=25, change=0.5):
         center = normalize(self.velocity) * d + self.position
         self.theta += random() * 2 * change - change
         randrad = vector((sin(self.theta), cos(self.theta))) * r
         desired = center + randrad
 
-        pygame.draw.line(scr, (0, 0, 255), self.position, center, 2)
-        pygame.draw.line(scr, (0, 0, 255), center, desired, 2)
-
         self.steer(desired - self.position)
+
+    def bounce(self, d=50):
+        if d > self.position[0]:
+            self.steer(vector((self.maxspeed, self.velocity[1])))
+        if self.position[0] > WIDTH - d:
+            self.steer(vector((-self.maxspeed, self.velocity[1])))
+        if d > self.position[1]:
+            self.steer(vector((self.velocity[1], self.maxspeed)))
+        if self.position[1] > HEIGHT - d:
+            self.steer(vector((self.velocity[1], -self.maxspeed)))
 
 
 # endregion
