@@ -8,9 +8,9 @@ from Globals import WIDTH, HEIGHT
 
 
 class FlowField:
-    def __init__(self):
+    def __init__(self, resolution=50):
         self.field = []
-        self.resolution = 50
+        self.resolution = resolution
         self.cols = int(WIDTH / self.resolution)
         self.rows = int(HEIGHT / self.resolution)
         for i in range(self.cols):

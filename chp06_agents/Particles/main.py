@@ -13,7 +13,7 @@ from math import acos, sin, cos, sqrt
 import pygame
 import time
 
-from chp06_agents.Particles.FlowField import PerlinField3d
+from chp06_agents.Particles.FlowField import PerlinField3d, FlowField
 
 # from Vehicle import Vehicle
 
@@ -102,6 +102,16 @@ class Path:
         return best_normal
 
 
+class PathField(FlowField):
+    def __init__(self, path):
+        super().__init__(path.raduis)
+        for i in range(self.cols):
+            for j in range(self.rows):
+                center = vector((int((i + 1.5) * self.resolution),
+                                 int((j + 1.5) * self.resolution)))
+                self.field[i][j] = (path.get_normal(center) - center) * 0.2
+
+
 class Vehicle(Mover):
     def __init__(self, pos):
         super().__init__(pos)
@@ -173,8 +183,8 @@ class Vehicle(Mover):
             self.steer(vector((self.velocity[1], -self.maxspeed)))
 
     def follow(self, field):
-        # desired = vector((0, 1))
-        desired = field.lookup(self.position + self.velocity)
+        # desired = field.lookup(self.position + self.velocity)
+        desired = field.lookup(self.position)
         self.steer(desired)
 
     def track(self, path, scr=None, debug=False):
@@ -219,13 +229,11 @@ movers = []
 
 movers.append(Vehicle(vector((WIDTH / 2, HEIGHT / 2))))
 
-N = 500
-for i in range(N - 1):
-    movers.append(Vehicle(vector((uniform(0, WIDTH), uniform(0, HEIGHT)))))
+# N = 500
+# for i in range(N - 1):
+#     movers.append(Vehicle(vector((uniform(0, WIDTH), uniform(0, HEIGHT)))))
 
 frames, total_waited = 0, 0
-
-flowfiled = PerlinField3d()
 
 path = Path()
 path.add_point(100, 100)
@@ -234,6 +242,8 @@ path.add_point(WIDTH - 100, HEIGHT - 100)
 path.add_point(WIDTH / 2, HEIGHT - 250)
 path.add_point(100, HEIGHT - 100)
 path.add_point(100, 100)
+
+flowfiled = PathField(path)
 
 # endregion
 
@@ -255,12 +265,12 @@ def main():
 
     for particle in movers:
         # particle.run(screen, show_velocities)
-        # particle.update()
-        # particle.toroid()
+        particle.update()
+        particle.toroid()
         # particle.bounce()
-        # particle.draw(screen, show_velocities)
-        # particle.follow(flowfiled)
-        particle.track(path, screen, show_velocities)
+        particle.draw(screen, show_velocities)
+        particle.follow(flowfiled)
+        # particle.track(path, screen, show_velocities)
         pass
 
     # print(len(movers))
