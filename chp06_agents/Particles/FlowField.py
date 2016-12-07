@@ -30,7 +30,7 @@ class FlowField:
                 center = vector((int((i + 0.5) * self.resolution),
                                  int((j + 0.5) * self.resolution)))
                 pygame.draw.circle(scr, (255, 255, 0), center,
-                                   int(self.resolution / 5), 1)
+                                   int(self.resolution / 8), 1)
                 pygame.draw.line(scr, (255, 255, 0),
                                  center, center + self.field[i][j], 1)
 

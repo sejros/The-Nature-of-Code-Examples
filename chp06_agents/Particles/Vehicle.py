@@ -79,6 +79,10 @@ class Vehicle(Mover):
         desired = field.lookup(self.position + self.velocity)
         self.steer(desired)
 
+    def track(self, path):
+        prediction_rate = 25
+        future_loc = self.position + norm(self.velocity) * prediction_rate
+
     def run(self, scr, debug):
         self.update()
 
