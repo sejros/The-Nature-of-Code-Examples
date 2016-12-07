@@ -12,12 +12,14 @@ from Globals import normalize
 class Vehicle(Mover):
     def __init__(self, pos):
         super().__init__(pos)
-        self.maxspeed = 5
-        self.maxforce = 0.1
+
+        self.maxspeed = 4
+        self.maxforce = 1.0
         self.desired = vector((0, 0))
         self.theta = 0
-        self.velocity = vector([uniform(-self.maxspeed / 2, self.maxspeed / 2),
-                                uniform(-self.maxspeed / 2, self.maxspeed / 2)])
+        self.velocity = vector([random() * self.maxspeed - self.maxspeed / 2,
+                                random() * self.maxspeed - self.maxspeed / 2])
+        print(self.velocity)
 
     def draw(self, scr, debug=False):
         pos = (int(self.position[0]), int(self.position[1]))

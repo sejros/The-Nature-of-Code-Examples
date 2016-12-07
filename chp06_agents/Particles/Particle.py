@@ -42,7 +42,7 @@ class Sprite(metaclass=ABCMeta):
 class Mover(Sprite):
     def __init__(self, pos):
         super().__init__()
-        spread = 1.0
+        spread = 10.0
         self.position = pos
         self.velocity = np.array([random.uniform(-spread, spread),
                                   random.uniform(-spread, spread)])

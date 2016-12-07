@@ -8,9 +8,10 @@ from random import random, uniform
 from numpy.linalg import norm
 from numpy import array as vector
 from numpy import dot
-from math import acos, sin, cos
+from math import acos, sin, cos, sqrt
 
 import pygame
+import time
 
 from chp06_agents.Particles.FlowField import PerlinField3d
 
@@ -69,34 +70,43 @@ class Path:
     def get_normal(self, pos, predict_rate=50):
         best_normal = None
         best_dist = -1
+
+        eps = 0.01
+
         for i in range(len(self.points) - 1):
             start = self.points[i]
             end = self.points[i + 1]
 
-            ab = normalize(end - start)
+            ab = end - start
+            abn = ab / sqrt(ab[0] ** 2 + ab[1] ** 2)
             ap = pos - start
-            normal = ab * dot(ap, ab)  # + ab*predict_rate
-            normal = start + normal
-            future_normal = normal + ab * predict_rate
 
-            to_end = end - future_normal
-            from_start = future_normal - start
-            if dot(to_end, from_start) < 0:
-                normal = end
+            normal = start + abn * (abn[0] * ap[0] + abn[1] * ap[1])
+            future_normal = normal + abn * predict_rate
 
-            d = dist(normal, pos)
+            ax = future_normal - start
+            if ab[0] != 0:
+                k = ax[0] / ab[0]
+            else:
+                k = ax[1] / ab[1]
+
+            d = sqrt((normal[0] - pos[0]) ** 2 + ((normal[1] - pos[1]) ** 2))
+
+            if not 0.0 - eps <= k <= 1.0 + eps:
+                d += 10000
+
             if best_dist == -1 or d < best_dist:
                 best_dist = d
                 best_normal = future_normal
-        if best_normal is not None:
-            return best_normal
+
+        return best_normal
 
 
 class Vehicle(Mover):
     def __init__(self, pos):
         super().__init__(pos)
-        self.maxspeed = 4
-        self.maxforce = 0.3
+        self.maxspeed = 5
+        self.maxforce = self.maxspeed / 10
         self.desired = vector((0, 0))
         self.theta = 0
         self.velocity = vector([uniform(-self.maxspeed / 2, self.maxspeed / 2),
@@ -116,11 +126,15 @@ class Vehicle(Mover):
             pygame.draw.line(scr, (0, 200, 0), pos, end, 2)
 
     def steer(self, desired):
+        # steer = vector((0, 1))
+
         if norm(desired) > self.maxspeed:
             desired = normalize(desired) * self.maxspeed
         self.desired = desired
         steer = desired - self.velocity
         steer = normalize(steer) * self.maxforce
+        # steer.normalize()
+
 
         self.apply(steer)
 
@@ -159,12 +173,14 @@ class Vehicle(Mover):
             self.steer(vector((self.velocity[1], -self.maxspeed)))
 
     def follow(self, field):
+        # desired = vector((0, 1))
         desired = field.lookup(self.position + self.velocity)
         self.steer(desired)
 
     def track(self, path, scr=None, debug=False):
         prediction_rate = 25
         future_loc = self.position + normalize(self.velocity) * prediction_rate
+        # future_loc = vector((0, 1))
         normal_loc = path.get_normal(future_loc)
 
         if debug:
@@ -193,13 +209,21 @@ class Vehicle(Mover):
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 done = False
 clock = pygame.time.Clock()
+old_time = pygame.time.get_ticks()
 
 show_velocities = False
 show_field = False
 show_path = True
 
 movers = []
-movers.append(Vehicle((WIDTH / 2, HEIGHT / 2)))
+
+movers.append(Vehicle(vector((WIDTH / 2, HEIGHT / 2))))
+
+N = 500
+for i in range(N - 1):
+    movers.append(Vehicle(vector((uniform(0, WIDTH), uniform(0, HEIGHT)))))
+
+frames, total_waited = 0, 0
 
 flowfiled = PerlinField3d()
 
@@ -215,6 +239,8 @@ path.add_point(100, 100)
 
 
 def main():
+    global old_time, frames, total_waited
+
     screen.fill(WHITE)
 
     if is_mouse_down and random() < 0.8:
@@ -228,14 +254,32 @@ def main():
     # flowfiled.update()
 
     for particle in movers:
-        particle.run(screen, show_velocities)
+        # particle.run(screen, show_velocities)
+        # particle.update()
+        # particle.toroid()
+        # particle.bounce()
+        # particle.draw(screen, show_velocities)
         # particle.follow(flowfiled)
         particle.track(path, screen, show_velocities)
+        pass
 
     # print(len(movers))
 
     pygame.display.flip()
-    clock.tick(60)
+
+    pygame.time.wait(0)
+
+    new_time = pygame.time.get_ticks()
+    waited = new_time - old_time
+    old_time = new_time
+    # if waited < 60:
+    #   time.sleep(1.0 / (60 - waited))
+    # print('waited: ', waited)
+
+    frames += 1
+    total_waited += waited
+
+    # clock.tick(30)
 
 
 while not done:
@@ -260,3 +304,5 @@ while not done:
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
             show_path = not show_path
     main()
+
+print(total_waited * 100 / frames / N)
