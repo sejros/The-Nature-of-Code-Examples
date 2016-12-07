@@ -42,35 +42,61 @@ def angle_between(vec1, vec2):
 # region class definition
 
 class Path:
-    def __init__(self, start, end):
-        self.start = vector(start)
-        self.end = vector(end)
+    def __init__(self):
+        self.points = []
         self.raduis = 20
 
-    def draw(self, scr):
-        pygame.draw.line(scr, (255, 230, 255),
-                         self.start, self.end,
-                         self.raduis * 2)
-        pygame.draw.circle(scr, (255, 230, 255),
-                           (int(self.start[0]), int(self.start[1])),
-                           self.raduis)
-        pygame.draw.circle(scr, (255, 230, 255),
-                           (int(self.end[0]), int(self.end[1])),
-                           self.raduis)
-        pygame.draw.line(scr, (255, 0, 255), self.start, self.end, 2)
+    def add_point(self, x, y):
+        self.points.append(vector((int(x), int(y))))
 
-    def get_normal(self, pos):
-        ab = normalize(self.end - self.start)
-        ap = pos - self.start
-        ab *= dot(ap, ab)
-        return self.start + ab
+    def draw(self, scr):
+        for i in range(len(self.points) - 1):
+            start = self.points[i]
+            end = self.points[i + 1]
+            pygame.draw.line(scr, (255, 230, 255),
+                             start, end,
+                             self.raduis * 2)
+            pygame.draw.circle(scr, (255, 230, 255),
+                               start, self.raduis)
+            pygame.draw.circle(scr, (255, 230, 255),
+                               end, self.raduis)
+
+        for i in range(len(self.points) - 1):
+            start = self.points[i]
+            end = self.points[i + 1]
+            pygame.draw.line(scr, (255, 0, 255), start, end, 2)
+
+    def get_normal(self, pos, predict_rate=50):
+        best_normal = None
+        best_dist = -1
+        for i in range(len(self.points) - 1):
+            start = self.points[i]
+            end = self.points[i + 1]
+
+            ab = normalize(end - start)
+            ap = pos - start
+            normal = ab * dot(ap, ab)  # + ab*predict_rate
+            normal = start + normal
+            future_normal = normal + ab * predict_rate
+
+            to_end = end - future_normal
+            from_start = future_normal - start
+            if dot(to_end, from_start) < 0:
+                normal = end
+
+            d = dist(normal, pos)
+            if best_dist == -1 or d < best_dist:
+                best_dist = d
+                best_normal = future_normal
+        if best_normal is not None:
+            return best_normal
 
 
 class Vehicle(Mover):
     def __init__(self, pos):
         super().__init__(pos)
-        self.maxspeed = 5
-        self.maxforce = 0.1
+        self.maxspeed = 4
+        self.maxforce = 0.3
         self.desired = vector((0, 0))
         self.theta = 0
         self.velocity = vector([uniform(-self.maxspeed / 2, self.maxspeed / 2),
@@ -137,21 +163,18 @@ class Vehicle(Mover):
         self.steer(desired)
 
     def track(self, path, scr=None, debug=False):
-        prediction_rate = 50
-        move_along_rate = 50
+        prediction_rate = 25
         future_loc = self.position + normalize(self.velocity) * prediction_rate
         normal_loc = path.get_normal(future_loc)
 
-        dir = normalize(path.end - path.start) * move_along_rate
-        target = normal_loc + dir
-
         if debug:
             pygame.draw.circle(scr, (255, 128, 255),
-                               (int(target[0]), int(target[1])), 10)
-            pygame.draw.circle(scr, (255, 128, 255),
+                               (int(normal_loc[0]), int(normal_loc[1])), 10)
+            pygame.draw.circle(scr, (255, 230, 255),
                                (int(future_loc[0]), int(future_loc[1])), 10)
 
-        self.seek(target)
+        if dist(future_loc, normal_loc) > path.raduis:
+            self.seek(normal_loc)
 
     def run(self, scr, debug):
         self.update()
@@ -180,7 +203,13 @@ movers.append(Vehicle((WIDTH / 2, HEIGHT / 2)))
 
 flowfiled = PerlinField3d()
 
-path = Path((100, HEIGHT / 3), (WIDTH - 100, HEIGHT * 5 / 7))
+path = Path()
+path.add_point(100, 100)
+path.add_point(WIDTH - 100, 100)
+path.add_point(WIDTH - 100, HEIGHT - 100)
+path.add_point(WIDTH / 2, HEIGHT - 250)
+path.add_point(100, HEIGHT - 100)
+path.add_point(100, 100)
 
 # endregion
 
