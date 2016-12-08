@@ -41,7 +41,7 @@ def angle_between(vec1, vec2):
 # region class definition
 
 class Vehicle(BaseVehicle):
-    def separate(self, vehicles, radius=20, debug=False):
+    def separate(self, vehicles):
         radius = self.size * 2
         sum_vel = vector((0.0, 0.0))
         n = 0
@@ -56,8 +56,8 @@ class Vehicle(BaseVehicle):
             sum_vel = normalize(sum_vel) * self.maxspeed
             self.steer(sum_vel)
 
-    def cohese(self, vehicles, radius=20, debug=False):
-        radius = self.size * 2
+    def cohese(self, vehicles):
+        radius = self.size * 2  #
         sum_vel = vector((0.0, 0.0))
         n = 0
         for other in vehicles:
@@ -69,6 +69,19 @@ class Vehicle(BaseVehicle):
         if n > 0:
             sum_vel /= n
             sum_vel = normalize(sum_vel) * self.maxspeed
+            self.steer(sum_vel)
+
+    def align(self, vehicles):
+        sum_vel = vector((0.0, 0.0))
+        n = 0
+        for other in vehicles:
+            if other is not self:
+                sum_vel += other.velocity
+                n += 1
+        if n > 0:
+            sum_vel /= n
+            sum_vel = normalize(sum_vel) * self.maxspeed
+            # print(self.velocity, sum_vel)
             self.steer(sum_vel)
 
 
@@ -181,19 +194,20 @@ def main():
         # particle.separate(movers)
         particle.separate(movers.nearest(particle.position))
         particle.cohese(movers.nearest(particle.position))
+        particle.align(movers.nearest(particle.position))
 
         # particle.follow(flowfiled)
         # particle.track(path, screen, show_velocities)
         pass
 
-    # x = movers[0]
-    # for x_ in movers.nearest(x.position):
-    #     pygame.draw.circle(screen, (255, 0, 0),
-    #                        (int(x_.position[0]), int(x_.position[1])),
-    #                        x.size, 3)
-    # pygame.draw.circle(screen, (0, 255, 0),
-    #                    (int(x.position[0]), int(x.position[1])),
-    #                    x.size, 3)
+    x = movers[0]
+    for x_ in movers.nearest(x.position):
+        pygame.draw.circle(screen, (255, 0, 0),
+                           (int(x_.position[0]), int(x_.position[1])),
+                           x.size, 3)
+    pygame.draw.circle(screen, (0, 255, 0),
+                       (int(x.position[0]), int(x.position[1])),
+                       x.size, 3)
 
     # print(len(movers))
 
@@ -206,7 +220,7 @@ def main():
     frames += 1
     total_waited += waited
 
-    clock.tick(30)
+    # clock.tick(30)
 
 
 while not done:
