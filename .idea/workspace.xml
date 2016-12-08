@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f852c0c-1aaf-4fb4-b1c3-bb0f97bd5db4" name="Default" comment="Chapter 6 Perlin flowfield">
+    <list default="true" id="4f852c0c-1aaf-4fb4-b1c3-bb0f97bd5db4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chp06_agents/Particles/FlowField.py" afterPath="$PROJECT_DIR$/chp06_agents/Particles/FlowField.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chp06_agents/Particles/main.py" afterPath="$PROJECT_DIR$/chp06_agents/Particles/main.py" />
     </list>
     <ignored path="nature_of_code.iws" />
@@ -27,8 +26,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chp06_agents/Particles/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="169" column="26" lean-forward="false" selection-start-line="169" selection-start-column="26" selection-end-line="169" selection-end-column="26" />
+            <state relative-caret-position="0">
+              <caret line="51" column="68" lean-forward="false" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
               <folding>
                 <element signature="e#35#72#0" expanded="true" />
               </folding>
@@ -51,8 +50,8 @@
       <file leaf-file-name="Vehicle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chp06_agents/Particles/Vehicle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="23" column="60" lean-forward="true" selection-start-line="23" selection-start-column="60" selection-end-line="24" selection-end-column="61" />
+            <state relative-caret-position="138">
+              <caret line="24" column="60" lean-forward="false" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -138,8 +137,8 @@
         <option value="$PROJECT_DIR$/chp06_agents/Particles/__init__.py" />
         <option value="$PROJECT_DIR$/chp06_agents/Particles/Particle.py" />
         <option value="$PROJECT_DIR$/chp06_agents/Particles/Globals.py" />
-        <option value="$PROJECT_DIR$/chp06_agents/Particles/Vehicle.py" />
         <option value="$PROJECT_DIR$/chp06_agents/Particles/FlowField.py" />
+        <option value="$PROJECT_DIR$/chp06_agents/Particles/Vehicle.py" />
         <option value="$PROJECT_DIR$/chp06_agents/Particles/main.py" />
       </list>
     </option>
@@ -681,18 +680,25 @@
       <option name="project" value="LOCAL" />
       <updated>1481180182658</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Chapter 6 Bin-lattice optimization">
+      <created>1481182854961</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1481182854961</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19033232" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3010204" sideWeight="0.5060423" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265306" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32312927" sideWeight="0.4939577" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32312927" sideWeight="0.4939577" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4506803" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27114803" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20694864" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -758,7 +764,8 @@
     <MESSAGE value="Chapter 6 Multisegmental path following" />
     <MESSAGE value="Chapter 6 Path following fixed" />
     <MESSAGE value="Chapter 6 Separation behavior" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chapter 6 Separation behavior" />
+    <MESSAGE value="Chapter 6 Bin-lattice optimization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chapter 6 Bin-lattice optimization" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1115,8 +1122,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chp06_agents/Particles/Vehicle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="23" column="60" lean-forward="true" selection-start-line="23" selection-start-column="60" selection-end-line="24" selection-end-column="61" />
+        <state relative-caret-position="138">
+          <caret line="24" column="60" lean-forward="false" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -1125,8 +1132,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chp06_agents/Particles/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="169" column="26" lean-forward="false" selection-start-line="169" selection-start-column="26" selection-end-line="169" selection-end-column="26" />
+        <state relative-caret-position="0">
+          <caret line="51" column="68" lean-forward="false" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
           <folding>
             <element signature="e#35#72#0" expanded="true" />
           </folding>

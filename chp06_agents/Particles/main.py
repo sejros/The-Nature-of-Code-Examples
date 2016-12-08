@@ -56,9 +56,24 @@ class Vehicle(BaseVehicle):
             sum_vel = normalize(sum_vel) * self.maxspeed
             self.steer(sum_vel)
 
+    def cohese(self, vehicles, radius=20, debug=False):
+        radius = self.size * 2
+        sum_vel = vector((0.0, 0.0))
+        n = 0
+        for other in vehicles:
+            d = dist(other.position, self.position)
+            if d > radius:
+                n += 1
+                diff = normalize(other.position - self.position)
+                sum_vel += diff
+        if n > 0:
+            sum_vel /= n
+            sum_vel = normalize(sum_vel) * self.maxspeed
+            self.steer(sum_vel)
+
 
 class Grid:
-    def __init__(self, resolution=20):
+    def __init__(self, resolution=40):
         self.resolution = resolution
         self.cols = int(WIDTH / self.resolution)
         self.rows = int(HEIGHT / self.resolution)
@@ -126,7 +141,7 @@ show_path = True
 # movers = []
 movers = Grid()
 
-N = 500
+N = 100
 for i in range(N - 1):
     movers.append(Vehicle(vector((uniform(0, WIDTH), uniform(0, HEIGHT))),
                           size=10, speed=10))
@@ -135,7 +150,7 @@ path = Path()
 path.add_point(100, 100)
 path.add_point(WIDTH - 100, 100)
 path.add_point(WIDTH - 100, HEIGHT - 100)
-path.add_point(WIDTH / 2, HEIGHT - 250)
+path.add_point(WIDTH / 2, HEIGHT - 150)
 path.add_point(100, HEIGHT - 100)
 path.add_point(100, 100)
 
@@ -165,19 +180,20 @@ def main():
 
         # particle.separate(movers)
         particle.separate(movers.nearest(particle.position))
+        particle.cohese(movers.nearest(particle.position))
 
         # particle.follow(flowfiled)
         # particle.track(path, screen, show_velocities)
         pass
 
-    x = movers[0]
-    for x_ in movers.nearest(x.position):
-        pygame.draw.circle(screen, (255, 0, 0),
-                           (int(x_.position[0]), int(x_.position[1])),
-                           x.size, 3)
-    pygame.draw.circle(screen, (0, 255, 0),
-                       (int(x.position[0]), int(x.position[1])),
-                       x.size, 3)
+    # x = movers[0]
+    # for x_ in movers.nearest(x.position):
+    #     pygame.draw.circle(screen, (255, 0, 0),
+    #                        (int(x_.position[0]), int(x_.position[1])),
+    #                        x.size, 3)
+    # pygame.draw.circle(screen, (0, 255, 0),
+    #                    (int(x.position[0]), int(x.position[1])),
+    #                    x.size, 3)
 
     # print(len(movers))
 
@@ -190,7 +206,7 @@ def main():
     frames += 1
     total_waited += waited
 
-    # clock.tick(30)
+    clock.tick(30)
 
 
 while not done:
