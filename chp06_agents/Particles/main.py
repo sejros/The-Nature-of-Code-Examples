@@ -39,6 +39,8 @@ def angle_between(vec1, vec2):
 
 # region class definition
 
+
+
 # endregion
 
 
@@ -53,12 +55,13 @@ frames, total_waited = 0, 0
 show_velocities = False
 show_field = False
 show_path = False
+show_grid = False
 
 # movers = []
-movers = Grid(resolution=50)
+movers = Grid(resolution=15)
 
 N = 100
-for i in range(N - 1):
+for i in range(N):
     movers.append(Vehicle(vector((uniform(0, WIDTH), uniform(0, HEIGHT))),
                           size=5, speed=10))
 
@@ -85,6 +88,8 @@ def main():
     if show_field:
         flowfiled.draw(screen)
     # flowfiled.update()
+    if show_grid:
+        movers.draw(screen)
     movers.update()
 
     for particle in movers:
@@ -95,16 +100,17 @@ def main():
         # particle.seek(mousepos)
 
         # particle.separate(movers)
-        particle.separate(movers.nearest(particle.position))
-        particle.cohese(movers.nearest(particle.position))
-        particle.align(movers.nearest(particle.position))
+        particle.separate(movers.nearest(particle.position, radius=15))
+        particle.cohese(movers.nearest(particle.position, radius=15))
+        particle.align(movers.nearest(particle.position, radius=15))
 
         # particle.follow(flowfiled)
         # particle.track(path, screen, show_velocities)
         # pass
 
     # x = movers[0]
-    # for x_ in movers.nearest(x.position):
+    # near = movers.nearest(x.position, radius=15)
+    # for x_ in near:
     #     pygame.draw.circle(screen, (255, 0, 0),
     #                        (int(x_.position[0]), int(x_.position[1])),
     #                        x.size, 3)
@@ -147,6 +153,8 @@ while not done:
             show_field = not show_field
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
             show_path = not show_path
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
+            show_grid = not show_grid
     main()
 
 print(total_waited * 1000 / frames / N)

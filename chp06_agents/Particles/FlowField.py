@@ -3,7 +3,7 @@ from math import pi, sin, cos
 import pygame
 from noise import pnoise2, pnoise3
 from numpy import array as vector
-from math import ceil
+from math import ceil, floor
 
 from Globals import WIDTH, HEIGHT
 
@@ -98,22 +98,47 @@ class Grid:
         self._add_object(obj)
 
     def _add_object(self, obj):
-        col = int(obj.position[0] / self.resolution) % self.cols - 1
-        row = int(obj.position[1] / self.resolution) % self.rows - 1
-        (self.grid[col][row]).append(obj)
+        col = floor(obj.position[0] / self.resolution)
+        row = floor(obj.position[1] / self.resolution)
+        if 0 <= col < self.cols and 0 <= row < self.rows:
+            (self.grid[col][row]).append(obj)
 
     def update(self):
         self._init()
         for obj in self.objects:
             self._add_object(obj)
 
-    def nearest(self, pos):
-        col = int(pos[0] / self.resolution) % self.cols - 1
-        row = int(pos[1] / self.resolution) % self.rows - 1
+    def nearest(self, pos, radius=40):
+        col = floor(pos[0] / self.resolution)
+        row = floor(pos[1] / self.resolution)
+
+        n = ceil(radius / self.resolution)
+        arr = vector(range(2 * n + 1)) - n
 
         res = []
-        for i in (-1, 0, 1):
-            for j in (-1, 0, 1):
-                res.extend(self.grid[col + i][row + j])
+        for i in arr:
+            for j in arr:
+                app = []
+                try:
+                    app = self.grid[col + i][row + j]
+                    res.extend(self.grid[col + i][row + j])
+                except IndexError:
+                    pass
 
         return res
+
+    def draw_cell(self, col, row, screen):
+        x = (col) * self.resolution
+        y = (row) * self.resolution
+        w = self.resolution
+        pygame.draw.rect(screen, (255, 0, 0), [x, y, w, w], 1)
+
+    def draw(self, scr):
+        pos = 0
+        for i in range(self.cols):
+            pos += self.resolution
+            pygame.draw.line(scr, (255, 255, 0), (pos, 0), (pos, HEIGHT), 1)
+        pos = 0
+        for i in range(self.rows):
+            pos += self.resolution
+            pygame.draw.line(scr, (255, 255, 0), (0, pos), (WIDTH, pos), 1)
