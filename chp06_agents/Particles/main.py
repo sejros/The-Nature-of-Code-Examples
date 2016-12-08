@@ -3,7 +3,7 @@
 
 # region imports
 
-from math import acos, sin, cos, sqrt
+from math import acos
 from random import random, uniform
 
 import pygame
@@ -11,7 +11,7 @@ from numpy import array as vector
 from numpy import dot
 from numpy.linalg import norm
 
-from chp06_agents.Particles.FlowField import PathField
+from chp06_agents.Particles.FlowField import PathField, Grid
 from chp06_agents.Particles.Path import Path
 
 try:
@@ -20,10 +20,9 @@ except ImportError:
     def b2World(*args, **kwargs):
         raise NotImplementedError()
 
-from Particle import Mover
-from Vehicle import Vehicle as BaseVehicle
+from Vehicle import Vehicle
 from Globals import WIDTH, HEIGHT, WHITE, mousepos, \
-    is_mouse_down, norm, dist, normalize
+    is_mouse_down, norm
 
 
 # endregion
@@ -40,102 +39,6 @@ def angle_between(vec1, vec2):
 
 # region class definition
 
-class Vehicle(BaseVehicle):
-    def separate(self, vehicles):
-        radius = self.size * 2
-        sum_vel = vector((0.0, 0.0))
-        n = 0
-        for other in vehicles:
-            d = dist(self.position, other.position)
-            if 0 < d < radius:
-                n += 1
-                diff = normalize(self.position - other.position) / d
-                sum_vel += diff
-        if n > 0:
-            sum_vel /= n
-            sum_vel = normalize(sum_vel) * self.maxspeed
-            self.steer(sum_vel)
-
-    def cohese(self, vehicles):
-        radius = self.size * 2  #
-        sum_vel = vector((0.0, 0.0))
-        n = 0
-        for other in vehicles:
-            d = dist(other.position, self.position)
-            if d > radius:
-                n += 1
-                diff = normalize(other.position - self.position)
-                sum_vel += diff
-        if n > 0:
-            sum_vel /= n
-            sum_vel = normalize(sum_vel) * self.maxspeed
-            self.steer(sum_vel)
-
-    def align(self, vehicles):
-        sum_vel = vector((0.0, 0.0))
-        n = 0
-        for other in vehicles:
-            if other is not self:
-                sum_vel += other.velocity
-                n += 1
-        if n > 0:
-            sum_vel /= n
-            sum_vel = normalize(sum_vel) * self.maxspeed
-            # print(self.velocity, sum_vel)
-            self.steer(sum_vel)
-
-
-class Grid:
-    def __init__(self, resolution=40):
-        self.resolution = resolution
-        self.cols = int(WIDTH / self.resolution)
-        self.rows = int(HEIGHT / self.resolution)
-        self.objects = []
-        self._init()
-
-    def __iter__(self):
-        return iter(self.objects)
-
-    def __len__(self):
-        return len(self.objects)
-
-    def __getitem__(self, index):
-        return self.objects[index]
-
-    def _init(self):
-        self.grid = []
-        for i in range(self.cols):
-            row = []
-            for j in range(self.rows):
-                row.append([])
-            self.grid.append(row)
-
-    def append(self, obj):
-        self.objects.append(obj)
-        self._add_object(obj)
-
-    def _add_object(self, obj):
-        col = int(obj.position[0] / self.resolution) % self.cols - 1
-        row = int(obj.position[1] / self.resolution) % self.rows - 1
-        (self.grid[col][row]).append(obj)
-
-    def update(self):
-        self._init()
-        for obj in self.objects:
-            self._add_object(obj)
-
-    def nearest(self, pos):
-        col = int(pos[0] / self.resolution) % self.cols - 1
-        row = int(pos[1] / self.resolution) % self.rows - 1
-
-        res = []
-        for i in (-1, 0, 1):
-            for j in (-1, 0, 1):
-                res.extend(self.grid[col + i][row + j])
-
-        return res
-
-
 # endregion
 
 
@@ -149,15 +52,15 @@ frames, total_waited = 0, 0
 
 show_velocities = False
 show_field = False
-show_path = True
+show_path = False
 
 # movers = []
-movers = Grid()
+movers = Grid(resolution=50)
 
 N = 100
 for i in range(N - 1):
     movers.append(Vehicle(vector((uniform(0, WIDTH), uniform(0, HEIGHT))),
-                          size=10, speed=10))
+                          size=5, speed=10))
 
 path = Path()
 path.add_point(100, 100)
@@ -198,16 +101,16 @@ def main():
 
         # particle.follow(flowfiled)
         # particle.track(path, screen, show_velocities)
-        pass
+        # pass
 
-    x = movers[0]
-    for x_ in movers.nearest(x.position):
-        pygame.draw.circle(screen, (255, 0, 0),
-                           (int(x_.position[0]), int(x_.position[1])),
-                           x.size, 3)
-    pygame.draw.circle(screen, (0, 255, 0),
-                       (int(x.position[0]), int(x.position[1])),
-                       x.size, 3)
+    # x = movers[0]
+    # for x_ in movers.nearest(x.position):
+    #     pygame.draw.circle(screen, (255, 0, 0),
+    #                        (int(x_.position[0]), int(x_.position[1])),
+    #                        x.size, 3)
+    # pygame.draw.circle(screen, (0, 255, 0),
+    #                    (int(x.position[0]), int(x.position[1])),
+    #                    x.size, 3)
 
     # print(len(movers))
 
@@ -220,7 +123,7 @@ def main():
     frames += 1
     total_waited += waited
 
-    # clock.tick(30)
+    clock.tick(30)
 
 
 while not done:
@@ -246,4 +149,4 @@ while not done:
             show_path = not show_path
     main()
 
-print(total_waited * 100 / frames / N)
+print(total_waited * 1000 / frames / N)

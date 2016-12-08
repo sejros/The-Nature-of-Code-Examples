@@ -108,3 +108,44 @@ class Vehicle(Mover):
         # self.bounce()
 
         self.draw(scr, debug)
+
+    def separate(self, vehicles):
+        radius = self.size * 2
+        sum_vel = vector((0.0, 0.0))
+        n = 0
+        for other in vehicles:
+            d = dist(self.position, other.position)
+            if 0 < d < radius:
+                n += 1
+                diff = normalize(self.position - other.position) / d
+                sum_vel += diff
+        if n > 0:
+            sum_vel /= n
+            sum_vel = normalize(sum_vel) * self.maxspeed
+            self.steer(sum_vel)
+
+    def cohese(self, vehicles):
+        radius = self.size * 2  #
+        sum_vel = vector((0.0, 0.0))
+        n = 0
+        for other in vehicles:
+            sum_vel += other.position
+            n += 1
+        if n > 0:
+            sum_vel /= n
+            # sum_vel = normalize(sum_vel) * self.maxspeed
+            # self.steer(sum_vel)
+            self.seek(sum_vel)
+
+    def align(self, vehicles):
+        sum_vel = vector((0.0, 0.0))
+        n = 0
+        for other in vehicles:
+            if other is not self:
+                sum_vel += other.velocity
+                n += 1
+        if n > 0:
+            sum_vel /= n
+            sum_vel = normalize(sum_vel) * self.maxspeed
+            # print(self.velocity, sum_vel)
+            self.steer(sum_vel)
