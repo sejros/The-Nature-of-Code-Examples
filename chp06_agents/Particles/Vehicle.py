@@ -14,7 +14,7 @@ class Vehicle(Mover):
         super().__init__(pos)
         self.size = size
         self.maxspeed = speed
-        self.maxforce = self.maxspeed / 5
+        self.maxforce = self.maxspeed / 10
         self.desired = vector((0, 0))
         self.theta = 0
         self.velocity = vector([uniform(-self.maxspeed / 2, self.maxspeed / 2),
@@ -42,7 +42,6 @@ class Vehicle(Mover):
         steer = desired - self.velocity
         steer = normalize(steer) * self.maxforce
         # steer.normalize()
-
 
         self.apply(steer)
 
@@ -82,7 +81,7 @@ class Vehicle(Mover):
 
     def follow(self, field):
         # desired = field.lookup(self.position + self.velocity)
-        desired = field.lookup(self.position)
+        desired = normalize(field.lookup(self.position)) * self.maxspeed
         self.steer(desired)
 
     def track(self, path, scr=None, debug=False):

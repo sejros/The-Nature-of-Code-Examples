@@ -5,7 +5,7 @@ from noise import pnoise2, pnoise3
 from numpy import array as vector
 from math import ceil, floor
 
-from Globals import WIDTH, HEIGHT
+from Globals import WIDTH, HEIGHT, dist, normalize
 
 
 class FlowField:
@@ -21,8 +21,8 @@ class FlowField:
             self.field.append(row)
 
     def lookup(self, location):
-        col = int(location[0] / self.resolution) % self.cols - 1
-        row = int(location[1] / self.resolution) % self.rows - 1
+        col = floor(location[0] / self.resolution)  # % self.cols - 1
+        row = floor(location[1] / self.resolution)  # % self.rows - 1
         return self.field[col][row]
 
     def draw(self, scr):
@@ -30,10 +30,10 @@ class FlowField:
             for j in range(self.rows):
                 center = vector((int((i + 0.5) * self.resolution),
                                  int((j + 0.5) * self.resolution)))
-                pygame.draw.circle(scr, (255, 255, 0), center,
-                                   ceil(self.resolution / 8), 1)
-                pygame.draw.line(scr, (255, 255, 0),
-                                 center, center + self.field[i][j], 1)
+                pygame.draw.circle(scr, (230, 230, 0), center,
+                                   ceil(self.resolution / 5), 2)
+                pygame.draw.line(scr, (230, 230, 0),
+                                 center, center + self.field[i][j] * 20, 2)
 
 
 class PerlinField(FlowField):
@@ -60,12 +60,12 @@ class PerlinField(FlowField):
 
 class PathField(FlowField):
     def __init__(self, path):
-        super().__init__(path.raduis)
+        super().__init__(path.raduis /1.5)
         for i in range(self.cols):
             for j in range(self.rows):
-                center = vector((int((i + 1.5) * self.resolution),
-                                 int((j + 1.5) * self.resolution)))
-                self.field[i][j] = (path.get_normal(center) - center) * 0.2
+                center = vector((int((i + 0.5) * self.resolution),
+                                 int((j + 0.5) * self.resolution)))
+                self.field[i][j] = normalize(path.get_normal(center) - center)  #* 0.2
 
 
 class Grid:
@@ -112,20 +112,27 @@ class Grid:
         col = floor(pos[0] / self.resolution)
         row = floor(pos[1] / self.resolution)
 
-        n = ceil(radius / self.resolution)
+        n = ceil(radius / self.resolution) + 1
         arr = vector(range(2 * n + 1)) - n
 
         res = []
         for i in arr:
             for j in arr:
-                app = []
                 try:
                     app = self.grid[col + i][row + j]
-                    res.extend(self.grid[col + i][row + j])
+                    res += app
                 except IndexError:
                     pass
 
-        return res
+        # print(len(res))
+        res1 = []
+        for other in res:
+            if 0 < dist(pos, other.position) < radius:
+                res1.append(other)
+
+        # print(len(res1))
+        # print()
+        return res1
 
     def draw_cell(self, col, row, screen):
         x = (col) * self.resolution

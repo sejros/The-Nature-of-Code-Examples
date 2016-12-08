@@ -53,23 +53,26 @@ old_time = pygame.time.get_ticks()
 frames, total_waited = 0, 0
 
 show_velocities = False
-show_field = False
-show_path = False
+show_field = True
+show_path = True
 show_grid = False
 
 # movers = []
-movers = Grid(resolution=15)
+movers = Grid(resolution=5)
+# movers.append(Vehicle(vector((uniform(0, WIDTH), uniform(0, HEIGHT))),
+#                           size=10, speed=10))
+# movers[0].velocity = vector((0, 0.0))
 
 N = 100
-for i in range(N):
-    movers.append(Vehicle(vector((uniform(0, WIDTH), uniform(0, HEIGHT))),
-                          size=5, speed=10))
+# for i in range(N):
+#     movers.append(Vehicle(vector((uniform(0, WIDTH), uniform(0, HEIGHT))),
+#                           size=5, speed=5))
 
 path = Path()
 path.add_point(100, 100)
 path.add_point(WIDTH - 100, 100)
 path.add_point(WIDTH - 100, HEIGHT - 100)
-path.add_point(WIDTH / 2, HEIGHT - 150)
+path.add_point(WIDTH / 2, HEIGHT - 250)
 path.add_point(100, HEIGHT - 100)
 path.add_point(100, 100)
 
@@ -83,40 +86,46 @@ def main():
     screen.fill(WHITE)
     if is_mouse_down and random() < 0.8:
         movers.append(Vehicle(mousepos.copy(), size=10))
+        # movers[-1].velocity = vector((0, 0.0))
     if show_path:
         path.draw(screen)
     if show_field:
         flowfiled.draw(screen)
     # flowfiled.update()
+    movers.update()
     if show_grid:
         movers.draw(screen)
-    movers.update()
 
     for particle in movers:
         particle.update()
         particle.toroid()
         # particle.bounce()
-        particle.draw(screen, show_velocities)
         # particle.seek(mousepos)
 
         # particle.separate(movers)
-        particle.separate(movers.nearest(particle.position, radius=15))
-        particle.cohese(movers.nearest(particle.position, radius=15))
-        particle.align(movers.nearest(particle.position, radius=15))
+        particle.separate(movers.nearest(particle.position, radius=10))
+        # particle.cohese(movers.nearest(particle.position, radius=15))
+        # particle.align(movers.nearest(particle.position, radius=15))
 
-        # particle.follow(flowfiled)
+        particle.follow(flowfiled)
         # particle.track(path, screen, show_velocities)
+
+        particle.draw(screen, show_velocities)
+
         # pass
 
     # x = movers[0]
-    # near = movers.nearest(x.position, radius=15)
+    # near = movers.nearest(x.position, radius=25)
     # for x_ in near:
     #     pygame.draw.circle(screen, (255, 0, 0),
     #                        (int(x_.position[0]), int(x_.position[1])),
-    #                        x.size, 3)
+    #                        x_.size, 3)
     # pygame.draw.circle(screen, (0, 255, 0),
     #                    (int(x.position[0]), int(x.position[1])),
     #                    x.size, 3)
+    # pygame.draw.circle(screen, (0, 255, 0),
+    #                    (int(x.position[0]), int(x.position[1])),
+    #                    25, 1)
 
     # print(len(movers))
 
@@ -129,7 +138,7 @@ def main():
     frames += 1
     total_waited += waited
 
-    clock.tick(30)
+    # clock.tick(30)
 
 
 while not done:
