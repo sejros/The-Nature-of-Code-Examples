@@ -22,7 +22,7 @@ class FlowField:
 
     def lookup(self, location):
         col = int(location[0] / self.resolution) % self.cols - 1
-        row = int(location[1] / self.resolution) % self.cols - 1
+        row = int(location[1] / self.resolution) % self.rows - 1
         return self.field[col][row]
 
     def draw(self, scr):
